@@ -2,18 +2,21 @@ package org.example;
 import java.util.ArrayList;
 
 class Deposito<T> {
-    private ArrayList<T> elementos;
+    private ArrayList<T> deposito;
 
     public Deposito() {
-        elementos = new ArrayList<>();
+        deposito = new ArrayList<>();
     }
 
-    public void add(T elem) {
-        elementos.add(elem);
+    public void add(T elemento) {
+        deposito.add(elemento);
     }
 
     public T get() {
-        if (elementos.isEmpty()) return null;
-        return elementos.remove(0);
+        if (deposito.isEmpty()) {
+            return null;
+        } else {
+            return deposito.remove(0);
+        }
     }
 }
