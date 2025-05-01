@@ -1,12 +1,11 @@
 package org.example;
 
-class CocaCola extends Bebida {
+class CocaCola extends Producto {
+
     public CocaCola(int serie) {
         super(serie);
     }
-
-    @Override
-    public String beber() {
+    public String consumir() {
         return "cocacola";
     }
 }

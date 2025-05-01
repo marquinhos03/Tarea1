@@ -1,11 +1,11 @@
 package org.example;
 
-class Sprite extends Producto {
+class Super8 extends Producto {
 
-    public Sprite(int serie) {
+    public Super8(int serie) {
         super(serie);
     }
     public String consumir() {
-        return "sprite";
+        return "super8";
     }
 }
