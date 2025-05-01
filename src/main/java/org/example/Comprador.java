@@ -34,7 +34,6 @@ class Comprador {
             if(sabor == "null") {
                 vuelto -= 100;
             }
-
         }
     }
 
