@@ -1,7 +1,7 @@
 package org.example;
 
 class NoHayProductoException extends Exception {
-    public NoHayProductoException(String mensaje) {
-        super(mensaje);
+    public NoHayProductoException(String errorMensaje) {
+        super(errorMensaje);
     }
 }
