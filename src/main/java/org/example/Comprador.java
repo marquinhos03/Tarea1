@@ -1,22 +1,40 @@
 package org.example;
 
 class Comprador {
-    private String sonido;
+    private String sabor;
     private int vuelto;
 
-    public Comprador(Moneda m, int cual, Expendedor exp) {
-        try {
-            Bebida b = exp.comprarBebida(m, cual);
-            sonido = b.beber();
-        } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
-            sonido = null;
-            System.out.println("Error: " + e.getMessage());
+    public Comprador(Moneda m, int cualProducto, Expendedor exp)
+            throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+
+        Producto p = null;
+        p = exp.comprarProducto(m, cualProducto);
+
+        while(exp.getVuelto()!= null) {
+            vuelto += 100;
         }
 
-        vuelto = 0;
-        Moneda mon;
-        while ((mon = exp.getVuelto()) != null) {
-            vuelto += mon.getValor();
+        if(p == null) {
+            if(m != null) {
+                vuelto = m.getValor();
+            }
+            else {
+                vuelto = 0;
+            }
+        }
+        else {
+            switch (cualProducto) {
+                case 1: sabor = "cocacola"; break;
+                case 2: sabor = "sprite"; break;
+                case 3: sabor = "fanta"; break;
+                case 4: sabor = "snickers"; break;
+                case 5: sabor = "super8"; break;
+                default: sabor = "null"; break;
+            }
+            if(sabor == "null") {
+                vuelto -= 100;
+            }
+
         }
     }
 
@@ -24,7 +42,7 @@ class Comprador {
         return vuelto;
     }
 
-    public String queBebiste() {
-        return sonido;
+    public String queSabor() {
+        return sabor;
     }
 }
