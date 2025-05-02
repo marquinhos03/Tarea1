@@ -1,6 +1,9 @@
 package org.example;
 
-class PagoIncorrectoException extends Exception {
+/**
+ * ExcepciÃ³n que se lanza cuando no se entrega una moneda (null).
+ */
+public class PagoIncorrectoException extends Exception {
     public PagoIncorrectoException(String mensaje) {
         super(mensaje);
     }
