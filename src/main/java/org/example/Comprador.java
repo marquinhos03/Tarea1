@@ -10,6 +10,7 @@ class Comprador {
         Producto p = null;
         p = exp.comprarProducto(m, cualProducto);
 
+        // Retirar monedas $100 una a una del deposito de vuelto
         while(exp.getVuelto()!= null) {
             vuelto += 100;
         }

@@ -8,7 +8,7 @@ public class Main {
 
         // Compra válida
         try {
-            m = new Moneda1500();
+            m = new Moneda100();
             c = new Comprador(m, 1, exp);
             System.out.println("Bebiste: " + c.queSabor()+", Vuelto: $"+ c.cuantoVuelto());
         } catch (PagoInsuficienteException | PagoIncorrectoException | NoHayProductoException e) {
@@ -17,7 +17,7 @@ public class Main {
 
         // No hay más Coca
         try {
-            m = new Moneda1500();
+            m = new Moneda1000();
             c = new Comprador(m, 1, exp);
             System.out.println("Bebiste: " + c.queSabor()+", Vuelto: $"+ c.cuantoVuelto());
         } catch (PagoInsuficienteException | PagoIncorrectoException | NoHayProductoException e) {
