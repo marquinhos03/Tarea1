@@ -1,16 +1,18 @@
 package org.example;
 
-abstract class Moneda {
-    private static int contadorSerie = 0;
-    private int serie;
+abstract class Moneda implements Comparable<Moneda> {
 
-    public Moneda() {
-        this.serie = contadorSerie++;
-    }
-
-    public int getSerie() {
-        return serie;
-    }
+    public Moneda() {}
 
     public abstract int getValor();
+
+    @Override
+    public String toString() {
+        return this.hashCode() + " " + this.getValor();
+    }
+
+    @Override
+    public int compareTo(Moneda moneda) {
+        return Integer.compare(this.getValor(), moneda.getValor());
+    }
 }
