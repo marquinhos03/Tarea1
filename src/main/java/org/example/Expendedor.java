@@ -29,6 +29,7 @@ class Expendedor {
     public Producto comprarProducto(Moneda m, int numDeposito)
             throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
 
+        // Veficar a que depósito pertenece el producto que se desea comprar
         tipoDeProducto cual = tipoDeProducto.identificarProducto(numDeposito);
 
         if (m == null) {
@@ -49,11 +50,13 @@ class Expendedor {
             default: monVu.add(m); return null;
         }
 
+        // Si no hay producto
         if (p == null) {
             monVu.add(m);
             throw new NoHayProductoException("Lo sentimos, no hay " + cual.getNombre() + " disponible.");
         }
         else {
+            // Devolver vuelto en monedas de a $100, una a una
             for(int i = m.getValor()/100; i > cual.getPrecio()/100 ; i--) {
                 monVu.add(new Moneda100());
             }
