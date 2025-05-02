@@ -1,65 +1,74 @@
 package org.example;
 
 class Expendedor {
-    public static final int COCA = 1;
-    public static final int SPRITE = 2;
 
-    private Deposito<Bebida> coca;
-    private Deposito<Bebida> sprite;
+    private Deposito<CocaCola> coca;
+    private Deposito<Sprite> sprite;
+    private Deposito<Fanta> fanta;
+    private Deposito<Snickers> snickers;
+    private Deposito<Super8> super8;
     private Deposito<Moneda> monVu;
-    private int precio;
-    private int serieContador = 0;
 
-    public Expendedor(int numBebidas, int precioBebidas) {
-        this.precio = precioBebidas;
+    public Expendedor(int cantidadProductos) {
         coca = new Deposito<>();
         sprite = new Deposito<>();
+        fanta = new Deposito<>();
+        snickers = new Deposito<>();
+        super8 = new Deposito<>();
         monVu = new Deposito<>();
 
-        for (int i = 0; i < numBebidas; i++) {
-            coca.add(new CocaCola(serieContador++));
-            sprite.add(new Sprite(serieContador++));
+        for (int i = 0; i < cantidadProductos; i++) {
+            coca.add(new CocaCola(i));
+            sprite.add(new Sprite(i));
+            fanta.add(new Fanta(i));
+            snickers.add(new Snickers(i));
+            super8.add(new Super8(i));
         }
     }
 
-    public Bebida comprarBebida(Moneda m, int cual)
-        throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
-        if (m == null) throw new PagoIncorrectoException("No se ingresó ninguna moneda");
+    public Producto comprarProducto(Moneda m, int numDeposito)
+            throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
 
-        Deposito<Bebida> deposito;
-        switch (cual) {
-            case COCA:
-                deposito = coca;
-                break;
-            case SPRITE:
-                deposito = sprite;
-                break;
-            default:
-                monVu.add(m);
-                throw new NoHayProductoException("El producto no existe");
+        tipoDeProducto cual = tipoDeProducto.identificarProducto(numDeposito);
+
+        if (m == null) {
+            throw new PagoIncorrectoException("No se ingresó ninguna moneda");
         }
-
-        if (m.getValor() < precio) {
+        else if(m.getValor() < cual.getPrecio()) {
             monVu.add(m);
             throw new PagoInsuficienteException("Dinero insuficiente");
         }
 
-        Bebida bebida = deposito.get();
-        if (bebida == null) {
+        Producto p = null;
+        switch (cual) {
+            case COCA: p = coca.get(); break;
+            case SPRITE: p = sprite.get(); break;
+            case FANTA: p = fanta.get(); break;
+            case SNICKERS: p = snickers.get(); break;
+            case SUPER8: p = super8.get(); break;
+            default: monVu.add(m); return null;
+        }
+
+        if (p == null) {
             monVu.add(m);
-            throw new NoHayProductoException("No quedan bebidas de ese tipo");
+            throw new NoHayProductoException("El producto no esta disponible");
         }
-
-        int vuelto = m.getValor() - precio;
-        while (vuelto >= 100) {
-            monVu.add(new Moneda100());
-            vuelto -= 100;
+        else {
+            for(int i = m.getValor()/100; i > cual.getPrecio()/100 ; i--) {
+                monVu.add(new Moneda100());
+            }
+            return p;
         }
-
-        return bebida;
     }
 
     public Moneda getVuelto() {
-        return monVu.get();
+        Moneda m = monVu.get();
+
+        if(m != null) {
+            return m;
+        }
+        else {
+            return null;
+        }
     }
 }
