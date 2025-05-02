@@ -1,19 +1,19 @@
 package org.example;
 
 /**
- * Clase que representa una CocaCola.
+ * Clase que representa un Snickers.
  */
-public class CocaCola extends Bebida {
+public class Snickers extends Dulce {
     /**
-     * Constructor para CocaCola.
+     * Constructor para Snickers.
      * @param serie Número de serie único.
      */
-    public CocaCola(int serie) {
+    public Snickers(int serie) {
         super(serie);
     }
 
     @Override
     public String consumir() {
-        return "cocacola";
+        return "snickers";
     }
 }

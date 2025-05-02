@@ -1,12 +1,19 @@
 package org.example;
 
-class Sprite extends Bebida {
+/**
+ * Clase que representa una Sprite.
+ */
+public class Sprite extends Bebida {
+    /**
+     * Constructor para Sprite.
+     * @param serie Número de serie único.
+     */
     public Sprite(int serie) {
         super(serie);
     }
 
     @Override
-    public String beber() {
+    public String consumir() {
         return "sprite";
     }
 }
