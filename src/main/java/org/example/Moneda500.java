@@ -1,6 +1,9 @@
 package org.example;
 
-class Moneda500 extends Moneda {
+/**
+ * Clase que representa una moneda de $500.
+ */
+public class Moneda500 extends Moneda {
     public Moneda500() {
         super();
     }
