@@ -49,6 +49,17 @@ public enum tipoDeProducto {
         return cual;
     }
 
+    public String getNombre() {
+        switch(getCual()) {
+            case 1: return "Sprite";
+            case 2: return "CocaCola";
+            case 3: return "Fanta";
+            case 4: return "Snickers";
+            case 5: return "Super 8";
+            default: return null;
+        }
+    }
+
     public int getPrecio() {
         return precio;
     }

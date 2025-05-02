@@ -51,7 +51,7 @@ class Expendedor {
 
         if (p == null) {
             monVu.add(m);
-            throw new NoHayProductoException("El producto no esta disponible");
+            throw new NoHayProductoException("Lo sentimos, no hay " + cual.getNombre() + " disponible.");
         }
         else {
             for(int i = m.getValor()/100; i > cual.getPrecio()/100 ; i--) {
