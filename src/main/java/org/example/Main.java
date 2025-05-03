@@ -23,7 +23,7 @@ public class Main {
 
         System.out.println("\nHa introducido una moneda de: $" + m.getValor());
         System.out.println("Comprando " + producto.getNombre() + " ...");
-        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Has consumido '" + c.queConsumiste() + "'");
         System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
 
         // Sprite
@@ -34,7 +34,7 @@ public class Main {
 
         System.out.println("\nHa introducido una moneda de: $" + m.getValor());
         System.out.println("Comprando " + producto.getNombre() + " ...");
-        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Has consumido '" + c.queConsumiste() + "'");
         System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
 
         // Fanta
@@ -45,7 +45,7 @@ public class Main {
 
         System.out.println("\nHa introducido una moneda de: $" + m.getValor());
         System.out.println("Comprando " + producto.getNombre() + " ...");
-        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Has consumido '" + c.queConsumiste() + "'");
         System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
 
         // Snickers
@@ -56,7 +56,7 @@ public class Main {
 
         System.out.println("\nHa introducido una moneda de: $" + m.getValor());
         System.out.println("Comprando " + producto.getNombre() + " ...");
-        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Has consumido '" + c.queConsumiste() + "'");
         System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
 
         // Super 8
@@ -67,7 +67,7 @@ public class Main {
 
         System.out.println("\nHa introducido una moneda de: $" + m.getValor());
         System.out.println("Comprando " + producto.getNombre() + " ...");
-        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Has consumido '" + c.queConsumiste() + "'");
         System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
 
 

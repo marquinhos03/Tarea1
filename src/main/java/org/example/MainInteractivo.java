@@ -12,6 +12,8 @@ public class MainInteractivo {
         System.out.println("=== EXPENDEDOR ===");
 
         boolean seguir = true;
+        boolean deseaSeguir = false;
+
         while (seguir) {
             System.out.println("\n--- MENU DE PRODUCTOS ---");
             for (int i = 0; i < TipoProducto.values().length; i++) {
@@ -25,7 +27,7 @@ public class MainInteractivo {
 
             if (opcionProducto == 0) {
                 seguir = false;
-                System.out.println("Fin expendedor");
+                System.out.println("Saliendo del expendedor...");
                 break;
             }
 
@@ -33,7 +35,6 @@ public class MainInteractivo {
             System.out.println("1. $100");
             System.out.println("2. $500");
             System.out.println("3. $1000");
-            System.out.println("4. $1500");
             System.out.print("Seleccione el número de la moneda: ");
             int opcionMoneda = scanner.nextInt();
 
@@ -49,13 +50,29 @@ public class MainInteractivo {
                     System.out.println("Opción de moneda no válida. Se intentará comprar sin moneda.");
                     break;
             }
+            deseaSeguir = true;
+            System.out.println();
 
             try {
                 Comprador comprador = new Comprador(moneda, opcionProducto, exp);
-                System.out.println("Consumiste: " + comprador.queConsumiste());
-                System.out.println("Vuelto: $" + comprador.cuantoVuelto());
+                System.out.println("Has consumido '" + comprador.queConsumiste() + "'");
+                System.out.println("Tu vuelto es: $" + comprador.cuantoVuelto());
             } catch (Exception e) {
                 System.out.println("Error inesperado: " + e.getMessage());
+            }
+
+            // Luego de haber comprado al menos una vez
+            if (deseaSeguir) {
+                System.out.println("\n¿Desea seguir comprando?");
+                System.out.println("1. Sí");
+                System.out.println("2. No");
+                System.out.print("Seleccione una opción: ");
+                int opcionSeguir = scanner.nextInt();
+
+                if (opcionSeguir != 1) {
+                    seguir = false;
+                    System.out.println("Saliendo del expendedor...");
+                }
             }
         }
 
