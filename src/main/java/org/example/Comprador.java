@@ -24,7 +24,7 @@ public class Comprador {
                 sabor = p.consumir();
             }
         } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("ERROR: " + e.getMessage());
         }
 
         Moneda moneda;
@@ -54,7 +54,7 @@ public class Comprador {
      * @param num Número entregado.
      * @return Tipo de producto correspondiente.
      */
-    private TipoProducto obtenerTipoPorNumero(int num) {
+    public TipoProducto obtenerTipoPorNumero(int num) {
         switch (num) {
             case 1:
                 return TipoProducto.COCA_COLA;

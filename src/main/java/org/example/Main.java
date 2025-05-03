@@ -8,41 +8,93 @@ import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
         Expendedor exp = new Expendedor(1); // Un producto por tipo
+        Moneda m = null;
+        int numDeposito;
+        Comprador c = null;
+        TipoProducto producto = null;
 
         System.out.println("=== COMPRAS VÁLIDAS ===");
 
-        Comprador c2 = new Comprador(new Moneda1000(), 2, exp); // Sprite
-        System.out.println("Consumiste: " + c2.queConsumiste());
-        System.out.println("Vuelto: $" + c2.cuantoVuelto());
+        // CocaCola
+        m = new Moneda1000();
+        numDeposito = 1;
+        c = new Comprador(m, numDeposito, exp);
+        producto = c.obtenerTipoPorNumero(numDeposito);
 
-        Comprador c3 = new Comprador(new Moneda1000(), 3, exp); // Fanta
-        System.out.println("Consumiste: " + c3.queConsumiste());
-        System.out.println("Vuelto: $" + c3.cuantoVuelto());
+        System.out.println("\nHa introducido una moneda de: $" + m.getValor());
+        System.out.println("Comprando " + producto.getNombre() + " ...");
+        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
 
-        Comprador c4 = new Comprador(new Moneda1000(), 4, exp); // Snickers
-        System.out.println("Consumiste: " + c4.queConsumiste());
-        System.out.println("Vuelto: $" + c4.cuantoVuelto());
+        // Sprite
+        m = new Moneda1000();
+        numDeposito = 2;
+        c = new Comprador(m, numDeposito, exp);
+        producto = c.obtenerTipoPorNumero(numDeposito);
 
-        Comprador c5 = new Comprador(new Moneda1000(), 5, exp); // Super8
-        System.out.println("Consumiste: " + c5.queConsumiste());
-        System.out.println("Vuelto: $" + c5.cuantoVuelto());
+        System.out.println("\nHa introducido una moneda de: $" + m.getValor());
+        System.out.println("Comprando " + producto.getNombre() + " ...");
+        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
 
-        System.out.println("\n=== PRUEBAS DE EXCEPCIONES ===");
+        // Fanta
+        m = new Moneda1000();
+        numDeposito = 3;
+        c = new Comprador(m, numDeposito, exp);
+        producto = c.obtenerTipoPorNumero(numDeposito);
+
+        System.out.println("\nHa introducido una moneda de: $" + m.getValor());
+        System.out.println("Comprando " + producto.getNombre() + " ...");
+        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
+
+        // Snickers
+        m = new Moneda1000();
+        numDeposito = 4;
+        c = new Comprador(m, numDeposito, exp);
+        producto = c.obtenerTipoPorNumero(numDeposito);
+
+        System.out.println("\nHa introducido una moneda de: $" + m.getValor());
+        System.out.println("Comprando " + producto.getNombre() + " ...");
+        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
+
+        // Super 8
+        m = new Moneda1000();
+        numDeposito = 5;
+        c = new Comprador(m, numDeposito, exp);
+        producto = c.obtenerTipoPorNumero(numDeposito);
+
+        System.out.println("\nHa introducido una moneda de: $" + m.getValor());
+        System.out.println("Comprando " + producto.getNombre() + " ...");
+        System.out.println("COMPRA EXITOSA: has consumido '" + c.queConsumiste() + "'");
+        System.out.println("Tu vuelto es: $" + c.cuantoVuelto());
+
+
+        System.out.println("\n=== PRUEBAS DE EXCEPCIONES ===\n");
 
         // No hay más CocaCola
-        Comprador c6 = new Comprador(new Moneda1000(), 1, exp);
+        m = new Moneda1000();
+        numDeposito = 1;
+        c = new Comprador(m, numDeposito, exp);
 
         // Pago insuficiente para Sprite
-        Comprador c7 = new Comprador(new Moneda500(), 2, exp);
+        m = new Moneda500();
+        numDeposito = 2;
+        c = new Comprador(m, numDeposito, exp);
 
         // Moneda nula
-        Comprador c8 = new Comprador(null, 3, exp);
+        m = null;
+        numDeposito = 3;
+        c = new Comprador(m, numDeposito, exp);
 
         // Producto inválido
         try {
-            new Comprador(new Moneda1000(), 99, exp);
+            m = new Moneda1000();
+            numDeposito = 99;
+            c = new Comprador(m, numDeposito, exp);
         } catch (Exception e) {
-            System.out.println("Error capturado: " + e.getMessage());
+            System.out.println("ERROR Capturado: " + e.getMessage());
         }
 
         System.out.println("\n=== ORDENANDO MONEDAS ===");
@@ -53,15 +105,15 @@ public class Main {
         monedas.add(new Moneda500());
 
         System.out.println("Antes de ordenar:");
-        for (Moneda m : monedas) {
-            System.out.println(m);
+        for (Moneda moneda : monedas) {
+            System.out.println(moneda);
         }
 
         Collections.sort(monedas);
 
         System.out.println("\nDespués de ordenar:");
-        for (Moneda m : monedas) {
-            System.out.println(m);
+        for (Moneda moneda : monedas) {
+            System.out.println(moneda);
         }
     }
 }

@@ -46,12 +46,12 @@ public class Expendedor {
             throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
 
         if (m == null) {
-            throw new PagoIncorrectoException("No se ha ingresado una moneda.");
+            throw new PagoIncorrectoException("No se ha ingresado ninguna moneda.");
         }
 
         if (m.getValor() < tipo.getPrecio()) {
             monVu.add(m);
-            throw new PagoInsuficienteException("Pago insuficiente para el producto.");
+            throw new PagoInsuficienteException("Pago insuficiente para el producto '" + tipo.getNombre() + "'");
         }
 
         Deposito<Producto> deposito = seleccionarDeposito(tipo);
@@ -59,7 +59,7 @@ public class Expendedor {
 
         if (producto == null) {
             monVu.add(m);
-            throw new NoHayProductoException("No hay productos disponibles del tipo solicitado.");
+            throw new NoHayProductoException("No hay disponibilidad del producto '" + tipo.getNombre() + "'");
         }
 
         int vuelto = m.getValor() - tipo.getPrecio();
